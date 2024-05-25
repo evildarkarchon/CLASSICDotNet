@@ -12,7 +12,9 @@ namespace CLASSICDotNet
         private readonly ISerializer _serializer;
         private Dictionary<string, object> _yamlData;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public YamlCache(string filePath)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             _filePath = filePath;
             _deserializer = new DeserializerBuilder()
@@ -39,11 +41,6 @@ namespace CLASSICDotNet
                     _yamlData = new Dictionary<string, object>();
                 }
             }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"File not found: {ex.Message}");
-                _yamlData = new Dictionary<string, object>();
-            }
             catch (UnauthorizedAccessException ex)
             {
                 Console.WriteLine($"Access to the file is denied: {ex.Message}");
@@ -66,7 +63,7 @@ namespace CLASSICDotNet
             }
         }
 
-        public string? ReadOrUpdateEntry(string key, string newValue = null)
+        public string? ReadOrUpdateEntry(string key, string? newValue = null)
         {
             try
             {
@@ -100,7 +97,9 @@ namespace CLASSICDotNet
                 if (currentNode.ContainsKey(finalKey))
                 {
                     var currentValue = currentNode[finalKey].ToString();
+#pragma warning disable CS8601 // Possible null reference assignment.
                     _cache[key] = currentValue;
+#pragma warning restore CS8601 // Possible null reference assignment.
 
                     if (newValue != null && newValue != currentValue)
                     {
