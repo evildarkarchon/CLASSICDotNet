@@ -1,8 +1,8 @@
 namespace CLASSICDotNet
 {
-    public partial class Form1 : Form
+    public partial class CLASSIC_Interface : Form
     {
-        public Form1()
+        public CLASSIC_Interface()
         {
             InitializeComponent();
         }

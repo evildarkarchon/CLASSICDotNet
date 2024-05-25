@@ -1,6 +1,6 @@
 ﻿namespace CLASSICDotNet
 {
-    partial class Form1
+    partial class CLASSIC_Interface
     {
         /// <summary>
         ///  Required designer variable.
