@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace CLASSICDotNet_WPF
+namespace CLASSICDotNet
 {
     /// <summary>
     /// Interaction logic for App.xaml
