@@ -20,11 +20,11 @@ namespace CLASSICDotNet
         public static string DocsCheckFolder()
         {
             var messageList = new List<string>();
-            string docsName = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Main_Docs_Name");
+            string docsName = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Main_Docs_Name");
 
             if (docsName.Contains("onedrive", StringComparison.CurrentCultureIgnoreCase))
             {
-                string docsWarn = YAMLData.CLASSIC_Main.ReadOrUpdateEntry<string>("Warnings_GAME.warn_docs_path");
+                string docsWarn = YamlData.CLASSIC_Main.ReadOrUpdateEntry<string>("Warnings_GAME.warn_docs_path");
                 messageList.Add(docsWarn);
             }
 
@@ -36,8 +36,8 @@ namespace CLASSICDotNet
             var messageList = new List<string>();
             Console.WriteLine($"- - - INITIATED {iniName} CHECK");
 
-            string folderDocs = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Root_Folder_Docs");
-            string docsName = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Main_Docs_Name");
+            string folderDocs = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Root_Folder_Docs");
+            string docsName = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Main_Docs_Name");
 
             var iniFileList = Directory.GetFiles(folderDocs, "*.ini").Select(Path.GetFileName).ToList();
             var iniPath = Path.Combine(folderDocs, iniName);
@@ -121,7 +121,7 @@ namespace CLASSICDotNet
                         "  CLASSIC will now enable this setting automatically in the game INI files. \n-----\n"
                     });
 
-                        var customIniConfig = YAMLData.CLASSIC_Main.ReadOrUpdateEntry<string>("Default_CustomINI");
+                        var customIniConfig = YamlData.CLASSIC_Main.ReadOrUpdateEntry<string>("Default_CustomINI");
                         iniFile.Write(customIniConfig);
                     }
                 }
@@ -165,8 +165,8 @@ namespace CLASSICDotNet
             bool xseScriptMissing = false;
             bool xseScriptMismatch = false;
 
-            Dictionary<string, string> xseHashedScripts = YAMLData.CLASSIC_Main.ReadOrUpdateEntry<Dictionary<string, string>>($"Game{Globals.Vr}_Info.XSE_HashedScripts");
-            var gameFolderScripts = YAMLData.CLASSIC_Main.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_Folder_Scripts");
+            Dictionary<string, string> xseHashedScripts = YamlData.CLASSIC_Main.ReadOrUpdateEntry<Dictionary<string, string>>($"Game{Globals.Vr}_Info.XSE_HashedScripts");
+            var gameFolderScripts = YamlData.CLASSIC_Main.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_Folder_Scripts");
 
             var xseHashedScriptsLocal = new Dictionary<string, string>();
 
@@ -211,12 +211,12 @@ namespace CLASSICDotNet
 
             if (xseScriptMissing)
             {
-                var warnMissing = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_XSE.Warn_Missing");
+                var warnMissing = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_XSE.Warn_Missing");
                 messageList.Add(warnMissing);
             }
             if (xseScriptMismatch)
             {
-                var warnMismatch = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_XSE.Warn_Mismatch");
+                var warnMismatch = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_XSE.Warn_Mismatch");
                 messageList.Add(warnMismatch);
             }
             if (!xseScriptMissing && !xseScriptMismatch)
@@ -232,12 +232,12 @@ namespace CLASSICDotNet
             var messageList = new List<string>();
             Console.WriteLine("- - - INITIATED XSE INTEGRITY CHECK");
 
-            string? catchErrors = YAMLData.CLASSIC_Main.ReadOrUpdateEntry("catch_log_errors");
-            string? xseAcronym = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_Acronym");
-            string? xseLogFile = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_File_XSE");
-            string? xseFullName = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_FullName");
-            string? xseVerLatest = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_Ver_Latest");
-            string? adlibFile = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_AddressLib");
+            string? catchErrors = YamlData.CLASSIC_Main.ReadOrUpdateEntry("catch_log_errors");
+            string? xseAcronym = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_Acronym");
+            string? xseLogFile = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_File_XSE");
+            string? xseFullName = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_FullName");
+            string? xseVerLatest = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_Ver_Latest");
+            string? adlibFile = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_AddressLib");
 
             if (File.Exists(adlibFile) && !string.IsNullOrEmpty(adlibFile))
             {
@@ -245,7 +245,7 @@ namespace CLASSICDotNet
             }
             else
             {
-                string warnAdlibMissing = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_MODS.Warn_ADLIB_Missing");
+                string warnAdlibMissing = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_MODS.Warn_ADLIB_Missing");
                 messageList.Add(warnAdlibMissing);
             }
 
@@ -260,7 +260,7 @@ namespace CLASSICDotNet
                 }
                 else
                 {
-                    string warnXseOutdated = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_XSE.Warn_Outdated");
+                    string warnXseOutdated = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_XSE.Warn_Outdated");
                     messageList.Add(warnXseOutdated);
                 }
 
@@ -298,10 +298,10 @@ namespace CLASSICDotNet
             var messageList = new List<string>();
             Console.WriteLine("- - - INITIATED GAME INTEGRITY CHECK");
 
-            string? steamIniLocal = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_SteamINI");
-            string? exeHashOld = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.EXE_HashedOLD");
-            string? gameExeLocal = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_EXE");
-            string? rootName = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Main_Root_Name");
+            string? steamIniLocal = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_SteamINI");
+            string? exeHashOld = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.EXE_HashedOLD");
+            string? gameExeLocal = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_EXE");
+            string? rootName = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Main_Root_Name");
 
 #pragma warning disable CS8604 // Possible null reference argument.
             var gameExePath = new FileInfo(gameExeLocal);
@@ -338,7 +338,7 @@ namespace CLASSICDotNet
                 }
                 else
                 {
-                    string? rootWarn = YAMLData.CLASSIC_Main.ReadOrUpdateEntry("Warnings_GAME.warn_root_path");
+                    string? rootWarn = YamlData.CLASSIC_Main.ReadOrUpdateEntry("Warnings_GAME.warn_root_path");
 #pragma warning disable CS8604 // Possible null reference argument.
                     messageList.Add(rootWarn);
 #pragma warning restore CS8604 // Possible null reference argument.
@@ -355,25 +355,25 @@ namespace CLASSICDotNet
         {
             Console.WriteLine("- - - INITIATED GAME PATH GENERATION");
 
-            string? gamePath = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Game");
-            string? xseAcronym = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_Acronym");
-            string? xseAcronymBase = YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game_Info.XSE_Acronym");
+            string? gamePath = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Game");
+            string? xseAcronym = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_Acronym");
+            string? xseAcronymBase = YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game_Info.XSE_Acronym");
 
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_Folder_Data", Path.Combine(gamePath, "Data"));
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_Folder_Scripts", Path.Combine(gamePath, "Data", "Scripts"));
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_Folder_Plugins", Path.Combine(gamePath, "Data", xseAcronymBase, "Plugins"));
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_SteamINI", Path.Combine(gamePath, "steam_api.ini"));
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_EXE", Path.Combine(gamePath, $"{Globals.Game}{Globals.Vr}.exe"));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_Folder_Data", Path.Combine(gamePath, "Data"));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_Folder_Scripts", Path.Combine(gamePath, "Data", "Scripts"));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_Folder_Plugins", Path.Combine(gamePath, "Data", xseAcronymBase, "Plugins"));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_SteamINI", Path.Combine(gamePath, "steam_api.ini"));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Game_File_EXE", Path.Combine(gamePath, $"{Globals.Game}{Globals.Vr}.exe"));
 
             if (Globals.Game == "Fallout4")
             {
                 if (string.IsNullOrEmpty(Globals.Vr))
                 {
-                    YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry("Game_Info.Game_File_AddressLib", Path.Combine(gamePath, "Data", xseAcronymBase, "plugins", "version-1-10-163-0.bin"));
+                    YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry("Game_Info.Game_File_AddressLib", Path.Combine(gamePath, "Data", xseAcronymBase, "plugins", "version-1-10-163-0.bin"));
                 }
                 else
                 {
-                    YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry("GameVR_Info.Game_File_AddressLib", Path.Combine(gamePath, "Data", xseAcronymBase, "plugins", "version-1-2-72-0.csv"));
+                    YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry("GameVR_Info.Game_File_AddressLib", Path.Combine(gamePath, "Data", xseAcronymBase, "plugins", "version-1-2-72-0.csv"));
                 }
             }
         }
@@ -388,8 +388,8 @@ namespace CLASSICDotNet
         {
             Console.WriteLine("- - - INITIATED DOCS PATH CHECK");
 
-            string? gameSid = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Main_SteamID");
-            string? docsName = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Main_Docs_Name");
+            string? gameSid = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Main_SteamID");
+            string? docsName = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Main_Docs_Name");
 
             string? GetWindowsDocsPath()
             {
@@ -399,7 +399,7 @@ namespace CLASSICDotNet
                 if (SHGetFolderPath(IntPtr.Zero, CSIDL_PERSONAL, IntPtr.Zero, SHGFP_TYPE_CURRENT, path) == 0)
                 {
                     var winDocs = Path.Combine(new string(path).TrimEnd('\0'), $"My Games\\{docsName}");
-                    YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs", winDocs);
+                    YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs", winDocs);
                     return winDocs;
                 }
                 return null;
@@ -419,7 +419,7 @@ namespace CLASSICDotNet
                         if (line.Contains(gameSid))
                         {
                             var linuxDocs = Path.Combine(libraryPath, "steamapps/compatdata", gameSid, "pfx/drive_c/users/steamuser/My Documents/My Games", docsName);
-                            YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs", linuxDocs);
+                            YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs", linuxDocs);
                             break;
                         }
                     }
@@ -436,7 +436,7 @@ namespace CLASSICDotNet
                     if (Directory.Exists(pathInput))
                     {
                         Console.WriteLine($"You entered: '{pathInput}' | This path will be automatically added to CLASSIC Settings.yaml");
-                        YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs", pathInput.Trim());
+                        YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs", pathInput.Trim());
                         break;
                     }
                     else
@@ -446,7 +446,7 @@ namespace CLASSICDotNet
                 }
             }
 
-            string? docsPath = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs");
+            string? docsPath = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs");
             if (string.IsNullOrEmpty(docsPath))
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -475,19 +475,19 @@ namespace CLASSICDotNet
         {
             Console.WriteLine("- - - INITIATED DOCS PATH GENERATION");
 
-            string? xseAcronym = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_Acronym");
-            string? xseAcronymBase = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game_Info.XSE_Acronym");
-            string? docsPath = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs");
+            string? xseAcronym = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.XSE_Acronym");
+            string? xseAcronymBase = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game_Info.XSE_Acronym");
+            string? docsPath = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Root_Folder_Docs");
 
 
 #pragma warning disable CS8604 // Possible null reference argument.
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_Folder_XSE", Path.Combine(docsPath, xseAcronymBase));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_Folder_XSE", Path.Combine(docsPath, xseAcronymBase));
 #pragma warning restore CS8604 // Possible null reference argument.
 
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_File_PapyrusLog", Path.Combine(docsPath, "Logs", "Script", "Papyrus.0.log"));
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_File_WryeBashPC", Path.Combine(docsPath, "ModChecker.html"));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_File_PapyrusLog", Path.Combine(docsPath, "Logs", "Script", "Papyrus.0.log"));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_File_WryeBashPC", Path.Combine(docsPath, "ModChecker.html"));
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-            YAMLData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_File_XSE", Path.Combine(docsPath, xseAcronymBase, $"{xseAcronym.ToLower()}.log"));
+            YamlData.CLASSIC_Fallout4_Local.ReadOrUpdateEntry($"Game{Globals.Vr}_Info.Docs_File_XSE", Path.Combine(docsPath, xseAcronymBase, $"{xseAcronym.ToLower()}.log"));
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
     }
@@ -634,7 +634,7 @@ namespace CLASSICDotNet
         }
     }
 
-    public class YAMLData
+    public class YamlData
     {
         public static YamlCache CLASSIC_Main { get; set; } = new YamlCache("CLASSIC Data/databases/CLASSIC Main.yaml");
         public static YamlCache CLASSIC_Fallout4 { get; set; } = new YamlCache("CLASSIC Data/databases/CLASSIC Fallout4.yaml");
@@ -647,8 +647,9 @@ namespace CLASSICDotNet
             if (!Path.Exists("CLASSIC Settings.yaml"))
             {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-                CLASSIC_Settings.ReadOrUpdateEntry(CLASSIC_Main.ReadOrUpdateEntry("CLASSIC_Info.default_settings").ToString());
-                
+                using StreamWriter sw = File.CreateText("CLASSIC Settings.yaml");
+                sw.Write(CLASSIC_Main.ReadOrUpdateEntry("default_settings"));
+
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
             }
             string? value = CLASSIC_Settings.ReadOrUpdateEntry(key);
@@ -669,6 +670,8 @@ namespace CLASSICDotNet
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
                     Console.WriteLine($"Error: {key} does not have a value in CLASSIC Settings.yaml.");
                     return null;
+                case "":
+                    return null;
                 default:
                     return value;
             }
@@ -682,9 +685,9 @@ namespace CLASSICDotNet
         public static async Task<bool> ClassicUpdateCheck()
         {
             LoggerConfig.LogDebug("INITIATED UPDATE CHECK");
-            if (YAMLData.SettingsCheck("Update Check") == true)
+            if (YamlData.SettingsCheck("Update Check") == true)
             {
-                string? classicLocal = YAMLData.CLASSIC_Main.ReadOrUpdateEntry("CLASSIC_Info.version");
+                string? classicLocal = YamlData.CLASSIC_Main.ReadOrUpdateEntry("CLASSIC_Info.version");
                 Console.WriteLine("❓ (Needs internet connection) CHECKING FOR NEW CLASSIC VERSIONS...");
                 Console.WriteLine("   (You can disable this check in CLASSIC Settings.yaml) \n");
 
@@ -706,13 +709,13 @@ namespace CLASSICDotNet
                     }
                     else
                     {
-                        Console.WriteLine(YAMLData.CLASSIC_Main.ReadOrUpdateEntry($"CLASSIC_Interface.update_warning_{Globals.Game}"));
+                        Console.WriteLine(YamlData.CLASSIC_Main.ReadOrUpdateEntry($"CLASSIC_Interface.update_warning_{Globals.Game}"));
                     }
                 }
                 catch (Exception ex) when (ex is HttpRequestException || ex is TaskCanceledException)
                 {
                     Console.WriteLine(ex.Message);
-                    Console.WriteLine(YAMLData.CLASSIC_Main.ReadOrUpdateEntry($"CLASSIC_Interface.update_unable_{Globals.Game}"));
+                    Console.WriteLine(YamlData.CLASSIC_Main.ReadOrUpdateEntry($"CLASSIC_Interface.update_unable_{Globals.Game}"));
                 }
             }
             else
@@ -736,7 +739,7 @@ namespace CLASSICDotNet
                 // Generate CLASSIC Ignore.yaml if it does not exist
                 if (!File.Exists(ignoreFilePath))
                 {
-                    string? defaultIgnoreFile = YAMLData.CLASSIC_Main.ReadOrUpdateEntry("CLASSIC_Info.default_ignorefile");
+                    string? defaultIgnoreFile = YamlData.CLASSIC_Main.ReadOrUpdateEntry("CLASSIC_Info.default_ignorefile");
                     File.WriteAllText(ignoreFilePath, defaultIgnoreFile);
                     LoggerConfig.LogInfo($"Generated {ignoreFilePath}");
                 }
@@ -744,7 +747,7 @@ namespace CLASSICDotNet
                 // Generate CLASSIC Local.yaml if it does not exist
                 if (!File.Exists(localYamlPath))
                 {
-                    string? defaultLocalYaml = YAMLData.CLASSIC_Main.ReadOrUpdateEntry("CLASSIC_Info.default_localyaml");
+                    string? defaultLocalYaml = YamlData.CLASSIC_Main.ReadOrUpdateEntry("CLASSIC_Info.default_localyaml");
                     File.WriteAllText(localYamlPath, defaultLocalYaml);
                     LoggerConfig.LogInfo($"Generated {localYamlPath}");
                 }
@@ -753,13 +756,13 @@ namespace CLASSICDotNet
                 if (!File.Exists(fidModsFilePath))
                 {
                     if (Globals.Game == "Fallout4") {
-                        string? defaultFidFile = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry("Default_FIDMods");
+                        string? defaultFidFile = YamlData.CLASSIC_Fallout4.ReadOrUpdateEntry("Default_FIDMods");
                         File.WriteAllText(fidModsFilePath, defaultFidFile);
                     LoggerConfig.LogInfo($"Generated {fidModsFilePath}");
                     } /*else if (Globals.Game == "SkyrimSE") {
-                        defaultFidFile = YAMLData.CLASSIC_SkyrimSE.ReadOrUpdateEntry($"CLASSIC Data/databases/CLASSIC {Globals.Game}.yaml", "Default_FIDMods");
+                        defaultFidFile = YamlData.CLASSIC_SkyrimSE.ReadOrUpdateEntry($"CLASSIC Data/databases/CLASSIC {Globals.Game}.yaml", "Default_FIDMods");
                     } else {
-                        defaultFidFile = YAMLData.CLASSIC_Other.ReadOrUpdateEntry($"CLASSIC Data/databases/CLASSIC {Globals.Game}.yaml", "Default_FIDMods");
+                        defaultFidFile = YamlData.CLASSIC_Other.ReadOrUpdateEntry($"CLASSIC Data/databases/CLASSIC {Globals.Game}.yaml", "Default_FIDMods");
                     */
                 }
             }
@@ -850,7 +853,7 @@ namespace CLASSICDotNet
         public static string Vr { get; set; } = "";
         static void VrCheck()
         {
-            if (YAMLData.SettingsCheck("VR Mode") == true)
+            if (YamlData.SettingsCheck("VR Mode") == true)
             {
                 Vr = "vr";
             }
