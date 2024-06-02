@@ -20,9 +20,9 @@ namespace CLASSICDotNet
         public static string DocsCheckFolder()
         {
             var messageList = new List<string>();
-            string docsName = YAMLData.CLASSIC_Main.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Main_Docs_Name");
+            string docsName = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Main_Docs_Name");
 
-            if (docsName.ToLower().Contains("onedrive"))
+            if (docsName.Contains("onedrive", StringComparison.CurrentCultureIgnoreCase))
             {
                 string docsWarn = YAMLData.CLASSIC_Main.ReadOrUpdateEntry<string>("Warnings_GAME.warn_docs_path");
                 messageList.Add(docsWarn);
@@ -36,8 +36,8 @@ namespace CLASSICDotNet
             var messageList = new List<string>();
             Console.WriteLine($"- - - INITIATED {iniName} CHECK");
 
-            string folderDocs = YAMLData.CLASSIC_Main.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Root_Folder_Docs");
-            string docsName = YAMLData.CLASSIC_Main.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Main_Docs_Name");
+            string folderDocs = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Root_Folder_Docs");
+            string docsName = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry<string>($"Game{Globals.Vr}_Info.Main_Docs_Name");
 
             var iniFileList = Directory.GetFiles(folderDocs, "*.ini").Select(Path.GetFileName).ToList();
             var iniPath = Path.Combine(folderDocs, iniName);
@@ -211,12 +211,12 @@ namespace CLASSICDotNet
 
             if (xseScriptMissing)
             {
-                var warnMissing = YAMLData.CLASSIC_Main.ReadOrUpdateEntry("Warnings_XSE.Warn_Missing");
+                var warnMissing = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_XSE.Warn_Missing");
                 messageList.Add(warnMissing);
             }
             if (xseScriptMismatch)
             {
-                var warnMismatch = YAMLData.CLASSIC_Main.ReadOrUpdateEntry("Warnings_XSE.Warn_Mismatch");
+                var warnMismatch = YAMLData.CLASSIC_Fallout4.ReadOrUpdateEntry("Warnings_XSE.Warn_Mismatch");
                 messageList.Add(warnMismatch);
             }
             if (!xseScriptMissing && !xseScriptMismatch)
