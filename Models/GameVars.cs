@@ -3,5 +3,5 @@
 public class GameVars
 {
     public string Game { get; set; } = "Fallout4";
-    public string VR { get; set; } = "";
+    public string Vr { get; set; } = "";
 }

@@ -1,13 +1,21 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace CLASSIC.Core.Logging;
 
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public static class Logger
 {
     private static readonly string LogPath = Path.Combine(AppContext.BaseDirectory, "CLASSIC Journal.log");
     private static readonly object LockObj = new();
 
+    /// <summary>
+    /// Configures the logger by checking and maintaining the state of the log file.
+    /// If the log file exists and is older than 7 days, it deletes the file and logs a message
+    /// indicating the change. This ensures that outdated logs do not accumulate.
+    /// If an error occurs during the deletion process, the exception is logged to the console.
+    /// </summary>
     public static void Configure()
     {
         if (!File.Exists(LogPath)) return;
@@ -41,6 +49,12 @@ public static class Logger
         Log("ERROR", message);
     }
 
+    /// <summary>
+    /// Logs a message with the specified log level to a file. The log entry includes the timestamp,
+    /// log level, and the message, ensuring thread-safe operation by using a locking mechanism.
+    /// </summary>
+    /// <param name="level">The level of the log message (e.g., DEBUG, INFO, ERROR).</param>
+    /// <param name="message">The message to log. Contains details about the event or error.</param>
     private static void Log(string level, string message)
     {
         lock (LockObj)
