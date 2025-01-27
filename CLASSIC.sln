@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLASSIC", "CLASSIC\CLASSIC.csproj", "{6D4C4860-2782-49F2-8255-8948208966A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLASSIC", "CLASSIC.csproj", "{6D4C4860-2782-49F2-8255-8948208966A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
