@@ -1,6 +1,7 @@
-﻿namespace CLASSIC.ViewModels;
-
-public class MainWindowViewModel : ViewModelBase
+﻿namespace CLASSIC.ViewModels
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    public class MainWindowViewModel : ViewModelBase
+    {
+        public string Greeting { get; } = "Welcome to Avalonia!";
+    }
 }
